@@ -1,0 +1,6 @@
+PWD /Users/baljinnyam/coding/.myapps/internship-report
+INPUT /usr/local/texlive/2023/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/latex.fmt
+INPUT abstract.tex
+OUTPUT abstract.log
