@@ -1,7 +1,0 @@
-\contentsline {part}{УДИРТГАЛ}{1}{chapter*.1}%
-\contentsline {chapter}{\numberline {1.}\uppercase {Тест}}{3}{chapter.1}%
-\contentsline {part}{\uppercase {Дүгнэлт}}{4}{chapter.1}%
-\contentsline {part}{НОМ ЗҮЙ}{5}{chapter.1}%
-\contentsline {part}{ХАВСРАЛТ}{6}{chapter*.3}%
-\contentsline {chapter}{\numberline {A.}\uppercase {Шинжилгээ зохиомж}}{6}{appendix.A}%
-\contentsline {chapter}{\numberline {B.}\uppercase {Кодын хэрэгжүүлэлт}}{7}{appendix.B}%
