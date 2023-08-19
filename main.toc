@@ -1,37 +1,7 @@
 \contentsline {part}{УДИРТГАЛ}{1}{chapter*.1}%
-\contentsline {chapter}{\numberline {1.}\uppercase {Тайлан боловсруулах зөвлөмж}}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Тайлангийн бүтэц ба төлөвлөлт}{2}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Тайлангийн гарчиг}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Бүлэг нэрлэх}{3}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Удирдтгал бичих}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Дүгнэлт бичих}{4}{section.1.3}%
-\contentsline {chapter}{\numberline {2.}\uppercase {Бичвэр боловсруулалт}}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Шинэ мөр ба цогцолбор}{5}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Бичвэр зэрэгцүүлэх}{6}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Зүүн тийш зэрэгцүүлэх}{6}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Баруун тийш зэрэгцүүлэх}{6}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Хэлбэржилт}{7}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Тодруулах}{7}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Налуулах}{7}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Доогуур зураас}{7}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}URL оруулах}{7}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Жагсаалт}{7}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Энгийн жагсаалт}{7}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Дугаартай жагсаалт}{8}{subsection.2.5.2}%
-\contentsline {chapter}{\numberline {3.}\uppercase {Ишлэл, зүүлт}}{9}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Ишлэл}{9}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Зүүлт}{9}{section.3.2}%
-\contentsline {chapter}{\numberline {4.}\uppercase {Зураг}}{10}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Зургийн хэмжээ өөрчлөх}{10}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Зураг эргүүлэх}{11}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Зургийн нэр}{12}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Зураг голлуулах}{13}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Зургийн чанар}{13}{section.4.5}%
-\contentsline {chapter}{\numberline {5.}\uppercase {Хүснэгт оруулах}}{14}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Хүснэгт зурах хэрэгсэл}{14}{section.5.1}%
-\contentsline {chapter}{\numberline {6.}\uppercase {Код ба алгоритм оруулах}}{15}{chapter.6}%
-\contentsline {part}{\uppercase {Дүгнэлт}}{17}{algorithm.1}%
-\contentsline {part}{НОМ ЗҮЙ}{17}{algorithm.1}%
-\contentsline {part}{ХАВСРАЛТ}{18}{chapter*.5}%
-\contentsline {chapter}{\numberline {A.}\uppercase {Шинжилгээ зохиомж}}{19}{appendix.A}%
-\contentsline {chapter}{\numberline {B.}\uppercase {Кодын хэрэгжүүлэлт}}{20}{appendix.B}%
+\contentsline {chapter}{\numberline {1.}\uppercase {Тест}}{3}{chapter.1}%
+\contentsline {part}{\uppercase {Дүгнэлт}}{4}{chapter.1}%
+\contentsline {part}{НОМ ЗҮЙ}{5}{chapter.1}%
+\contentsline {part}{ХАВСРАЛТ}{6}{chapter*.3}%
+\contentsline {chapter}{\numberline {A.}\uppercase {Шинжилгээ зохиомж}}{6}{appendix.A}%
+\contentsline {chapter}{\numberline {B.}\uppercase {Кодын хэрэгжүүлэлт}}{7}{appendix.B}%
