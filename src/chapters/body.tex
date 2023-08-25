@@ -1,0 +1,23 @@
+\section{Pillow сан ашиглан динамик байдлаар текстээс зураг үүсгэх}
+\subsection{Database дээр зурагний мэдээлэл хадгалах table нэмэх}
+Database-н table дээр өөрчлөлт оруулахдаа бид sqlalchemy ашиглаж байгаа ба доор бичсэн моделийн дагуу бид migrate хийх юм. Үүний тулд back-end ажиллаж байгаа Docker container-лүү shell нээж төслийн root хэсгээс
+\begin{lstlisting}[language=bash]
+	alembic revision --autogenerate -m "your commit message"
+\end{lstlisting}
+гэсэн коммандын ашиглан өөрлөлт оруулах мэдээллиг үүсгэн. Дараа нь
+\begin{lstlisting}[language=bash]
+	alembic upgrade head
+\end{lstlisting}
+комманд хийснээр Датабазын модел бүрэн өөрчлөгдөнө.
+
+\begin{lstlisting}[language=Python,caption={Table-рүү оруулсан өөрчлөлт},frame=single]
+	class User(Base):
+		# ...
+		# Other table information
+		text_title_string = Column(String(255), nullable=False, default="")
+		text_title_color = Column(String(255), nullable=False, default="#000000")
+		text_title_font_size = Column(Integer, nullable=False, default=0)
+		text_title_font_name = Column(String(255), nullable=False, default="")
+		text_title_is_vertical = Column(Integer, nullable=False, default=0)
+	\end{lstlisting}
+\end{document}

@@ -1,0 +1,28 @@
+\section{Back-end талын технологиуд}
+\subsection{Python, FastAPI}
+FastAPI нь python хэлний ASGI\footnote{Asynchronous Server Gateway Interface}
+framework ба үзүүлэлтийн хувьд nodejs эсвэл go зэргийн үзүүлдэг маш өндөр үзүүлэлтрүү дөхдөг билээ.
+
+\begin{itemize}
+	\item Asynchronous байдлаар ажиллаж чаддаг байдал нь cpu-ны олон цөмийг ашиглах боломжийг олгодог ингэснээр илүү олон хандалт зэрэг авч чадна.
+	\item Pydantic, Starlette гэсэн хоёр сан дээр суурилсан ба, starlette нь ASGI байдлаар ажиллах боломжийг олгох бол, Pydantic нь server дээр validation хийх боломжийг олгодог.
+	\item Database migration хийхэд sqlalchemy ашигладаг ба энэ нь python хэлний ORM\footnote{Object Relational Mapping} ба давуу тал нь хөгжүүлэгч шууд database-тай харьцах биш python-г ашиглан харьцах боломжийг олгоно,    ингэснээр database-н схемыг өөрчлөхэд хялбар болохоос гадна database injection зэргээс сэргийлэх давуу талтай.
+\end{itemize}
+
+
+\section{Front-end талын технологиуд}
+\subsection{Vuejs}
+Front-end талын хэсгийн технологи бол Vuejs-н progressive framework \textbf{Nuxt.js}\footnote{\url{https://nextjs.org/}} ба давуу тал нь SSR хийх боломжийг олгодгоос гадна бусад routing, local storage, гэх мэт хөгжүүлжэгчдийн өөрсдөө тохируулдаг зүйлсийг цаанаас нь шийдэж өгсөн байдаг.
+
+\section{Бусад}
+\subsection{Amazon S3}
+Amazon S3 нь Amazon-н cloud service ба энэ нь хэрэглэгчдийн өгөгдөл, зураг, видео, гэх мэт өгөгдөл хадгалах, хэрэглэгчдийн хандахад хялбар байдлаар хандах боломжийг олгодог.
+\subsection{ImageMagick}
+ImageMagick нь код бичих замаар зурагт засвар оруулдаг сан.
+\subsection{LAYOUTGAN++}
+LAYOUTGAN++ дээр fine-tune хийснээр, аль болох хэрэглэгчид таалагдахуйц байдлаар шошгон дээрх матералуудыг байршуулах боломжтой болно.
+\subsection{Dockerizing}
+Орчин үеийн нэгэн гайхалтай технологи бол контайнерчлах юм. Яагаад Docker чухал вэ гэвэл, ямар нэгэн систем хөгжүүлэгчийн компьютер аль эсвэл ямар сервер дээр ажиллаж байгаагаас үл хамааран проргам нь өөрийн тусдаа орчинд ажиллах юм. Яг л Virtual machine шиг гэхдээ давуу тал нь Docker host system-ийнхээ цөмийг (kernel)-г ашигладаг учраас маш бага хэмжээгий зай, нөөц ашигладаг.
+\subsection{CI/CD}
+Мөн сүүлийн үед маш их өргөн түгж байгаа ойлголт бол Continius Integration/Continius Development.
+Энэ нь проргам хангамж ямар ч нөхцөлд хөгжүүлэлт тасралтгүй явж байх орчноор хангадаг ба системд хэзээ ч тасалдал үүсгэхгүй мөн хүний оролцоог маш бага байлгах давуу талтай.
