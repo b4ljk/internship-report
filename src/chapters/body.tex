@@ -106,8 +106,25 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
 \end{figure}
 \subsection{Алгоритмын тайлбар}
 Дээрх зурганд харуулсан Алгоритмыг ерөнхийд нь тайлбарлавал, хэрэглэгчийн зураг үүсгэхийг хүссэн тексттэй адилхан агуулгатай өгөгдөл database дээр байгаа эсэхийг шалгах юм. Хэрэв тийм өгөгдөл олдвол тухайн өгөгдлийн цаашид үүсгэх шошгонууд дээрээ жин өгч магадлал тооцон ашиглах юм.
+Ингэхдээ текстээс зураг үүсгэдэг алгоритмыг ашиглан 8 өнгө 3 фонт дээр төрөл бүрийн зурагнууд үүсгэж түүнийгээ database дээр олдсон зурагнуудтай нийлүүлэн магадлал тооцно.
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{src/pictures/algorithm2.png}
 	\caption{Алгоритм-2}
 \end{figure}
+
+\begin{lstlisting}[language=Python,caption={Сонголт хийх код},frame=single]
+	if registered_materials_from_db:
+	item_list.extend([black, other, db_item])
+	item_weight.extend([0.7 * 1 / 3, 0.3 * 1 / 3, 1 / 3])
+else:
+	item_list.extend([black, other])
+	item_weight.extend([0.7, 0.3])
+\end{lstlisting}
+
+\subsection{Ажиллах дараалал}
+\begin{enumerate}
+	\item Хэрэглэгчийн оруулсан текстээс \verb|\n| ялгаж хэдэн мөр байхыг гаргана.
+	\item Хэрэглэгчийн оруулсан фонт мөрийн тоо, нэг мөр дэх үсгийн тооноос хамаарч өөр өөр байх хоосон зургуудийг үүсгэнэ.
+	\item Хоосон зургуудруугаа текстийг нэг нэгээр нь нэмнэ.
+	\end{enumerate}
