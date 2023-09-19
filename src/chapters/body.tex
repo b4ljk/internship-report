@@ -85,6 +85,12 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
 <div class="py-20"></div>
 
 	\end{lstlisting}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.3]{src/pictures/front.png}
+		\caption{Алгоритм}
+	\end{figure}
 
 \subsection{Үүсгэсэн API дуудах}
 Энэхүү endpoint-руу user үүсгэх зурагнийхаа текст мэдээллийг JSON хэлбэрээр POST хүсэлт явуулна. Фронтэнд-с үүсгэсэн Эндпойнт ашиглахдаа responseType-г нь arraybuffer болгож байгаа юм ингэснээр бейс64 (base64) зургийг интернетээр явуулснаас харьцангуй бага нөөц (bandwidth) ашиглах юм. Үүний дараагаар авсан өгөгдлөө задалж (decode) хийж бейс64 зураг болгон хэрэглэгчид харуулна.
@@ -121,8 +127,39 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
     gaps: Optional[int] = 3
     PPI: Optional[int] = 300
 \end{lstlisting}
-
 Өмнөх API-г зөвхөн хэрэглэгч ямар хэлбэр дүрстэй зураг үүсгэснээ харах зорилготой байсан бол яг production орчинд хэрвээ тэрхүү үүсгэсэн зураг нь таалагдсан бол, текстээс үүсгэсэн зураг материалд ашиглахад тэс өөр логик ашиглах юм.
+
+\subsubsection{Үүсгэсэн зургийг s3-д хадгалах}
+
+\begin{lstlisting}[language=Python,caption={Үүсгэсэн зургийг s3-д хадгалах},frame=single]
+	def get_boto3_client():
+    global _s3_client
+
+    if not _s3_client:
+        if settings.IS_LOCAL:
+            _s3_client = boto3.client(
+                "s3",
+                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+            )
+        else:
+            _s3_client = boto3.client("s3")
+    return _s3_client
+
+	def upload_file_object(object_file, file_name: str, bucket: str = settings.GENERATION_S3_BUCKET):
+    # Upload the file object
+    s3_path = os.path.join(bucket, file_name)
+    try:
+        s3_client = get_boto3_client()
+        s3_client.upload_fileobj(object_file, bucket, file_name)
+    except ClientError as e:
+        logging.error(e)
+        return False, s3_path
+    return True, s3_path
+
+\end{lstlisting}
+
+
 
 \begin{figure}
 	\centering
