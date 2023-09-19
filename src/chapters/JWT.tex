@@ -9,3 +9,49 @@ JSON Web Token (JWT) нь нээлттэй стандарт (RFC 7519) бөгө�
 	\item \textbf{Гарын үсэг (signature)}: Гарын үсгийн хэсгийг үүсгэхийн тулд их бие, толгой хоёрийг авч толгой хэсэгт заасан алгоритмыг ашиглан гарын үсэг зурна. Гарын үсэг зурна гэдэг нь ерөнхийдөө энэхүү мэдээллийг ХАЙШ хийх ба дараа нь үүссэн ХАЙШ нь үүнийг баталгаажуулахад ашиглагдах юм.
 \end{itemize}
 
+\begin{lstlisting}[language=Python,caption={JWT олгох код},frame=single]
+	def _create_token(token_type: str, lifetime: timedelta, sub: str) -> str:
+	payload = {}
+	expire = datetime.utcnow() + lifetime
+	payload["type"] = token_type
+
+	payload["exp"] = expire
+	payload["iat"] = datetime.utcnow()
+	payload["sub"] = str(sub)
+
+	return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.ALGORITHM)
+
+\end{lstlisting}
+
+\subsubsection{JWT токен шалгах}
+Хэрэглэгч Бакэндтэй харьцах болгондоо өөрийг токенийг илгээж жинхэнэ хэрэглэгч гэдгээ баталгаажуулах ёстой. Тийм учраас JWT үүсгэхдээ анхаарах хамгийн чухал зүйлс бол токен олгосон цаг, токен дуусах цаг хоёр юм.
+\begin{lstlisting}[language=Python,caption={JWT тайлж баталгаажуулах код},frame=single]
+	async def get_current_user(
+    db: Session = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
+) -> User:
+    try:
+        payload = jwt.decode(
+            token,
+            settings.JWT_SECRET,
+            algorithms=[settings.ALGORITHM],
+            options={"verify_aud": False},
+        )
+        sub: str = payload.get("sub")
+        if sub is None:
+            raise credentials_exception
+        id, role = sub.split("|")
+        token_data = TokenData(username=id, role=role)
+    except JWTError:
+        raise credentials_exception
+
+    if token_data.role not in ["admin", "OSPdesigner", "OSPsalesman", "client"]:
+        raise credentials_exception
+
+    user = db.query(User).filter(User.id == token_data.username).first()
+    if user is None:
+        raise credentials_exception
+
+    return user
+
+\end{lstlisting}

@@ -34,6 +34,11 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
 
 
 \end{enumerate}
+Хэрвээ ямар ч асуудалгүй бол шаардлагатай үйлдлүүдийг гүйцэтгэж, хэрэглэгчид хэрэгтэй мэдээллийг буцаана.
+\subsubsection{Зураг буцаан илгээх}
+Гэвч зургийг буцаан илгээх нь харьцангуй төвөгтэй. Гол учир нь гэвэл зургийг шууд стринг байдлаар явууллаа гэж бодоход том зураг бол өгөгдлийн хэмжээ 33 хувиар ихэснэ үүнээс гадна. Зургийг нэг доор боловсруулж байгаа тул удаан интернеттэй хэрэглэгчийн хувьд зургийг харахгүй хоосон дэлгэц маш удаанаар ширтэх юм.
+
+Харин зургийг хэрэглэгч рүү явуулах хамгийн шилдэг арга бол урсгал маягаар явуулах буюу Stream хэрэглэгчид илгээх юм, ингэснээр ямар нэг илүүдэл хэмжээний файл явуулахгүй, яг тухайн зургийг хэрэглэгчийн интернэтийн хурданд тааруулах бага багаар явуурлах боломж бүрдэх юм, үүний үр дүнд хэрэглэгч зургийг бага багаар уншиж байгааг нь дээрээс нь харах гэх мэт маш олон давуу талтай.
 \begin{lstlisting}[language=Python,caption={Зураг буцаан user-лүү илгээх endpoint},frame=single]
 	from fastapi import APIRouter, Depends, status
 	from sqlalchemy.orm import Session
@@ -61,8 +66,28 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
 			)
 	\end{lstlisting}
 
+\subsection{Фронтэнд хөгжүүлэлт}
+\subsubsection{Дахин ашиглагдах компонент үүсгэх}
+Орчин цагийн Фронтэнд хөгжүүлэлтэнд хамгийн түгээмэл ашиглагддаг филсофи бол бүрэлдэхүүн хэсгүүдийг аль болох олон жижиг хэсгүүдэд хувааж дараа нь тэдгээрийг ахин ашиглах явдал юм.
+
+\begin{lstlisting}[language=JavaScript,caption={ProductArea компонент ашигласан байдал},frame=single]
+	<div class="relative">
+	<ProductArea ref="text_title" v-model="text_title_string" title="商品タイトル" identifier="1"
+		:default_text="text_title_string" :default_radio="text_title_is_vertical"
+		@textChanged="prod_area_handler" />
+	<p v-if="text_title_string_error" class="error-message break-line absolute top110">
+		商品タイトルを入力してください
+	</p>
+</div>
+<ProductArea ref="text_copy" v-model="text_copy_string" title="キャッチコピー" identifier="2"
+	:default_text="text_copy_string" :default_radio="text_copy_is_vertical"
+	@textChanged="prod_area_handler" />
+<div class="py-20"></div>
+
+	\end{lstlisting}
+
 \subsection{Үүсгэсэн API дуудах}
-Энэхүү endpoint-руу user үүсгэх зурагнийхаа текст мэдээллийг JSON хэлбэрээр POST request явуулна. Frontend-с үүсгэсэн Endpointoo ашиглахдаа responseType-г нь arraybuffer болгож байгаа юм ингэснээр base64 image interneteer явуулснаас харьцангуй бага bandwidth ашиглах юм. Үүний дараагаар авсан датагаа decode хийж base64 img болгон хэрэглэгчид харуулна.
+Энэхүү endpoint-руу user үүсгэх зурагнийхаа текст мэдээллийг JSON хэлбэрээр POST хүсэлт явуулна. Фронтэнд-с үүсгэсэн Эндпойнт ашиглахдаа responseType-г нь arraybuffer болгож байгаа юм ингэснээр бейс64 (base64) зургийг интернетээр явуулснаас харьцангуй бага нөөц (bandwidth) ашиглах юм. Үүний дараагаар авсан өгөгдлөө задалж (decode) хийж бейс64 зураг болгон хэрэглэгчид харуулна.
 
 
 \begin{lstlisting}[language=JavaScript,caption={Endpoint дуудах function},frame=single]
@@ -104,14 +129,25 @@ Back-end дээр API үүсгэхэд анхаарах хэдэн зүйл би
 	\includegraphics[scale=0.6]{src/pictures/algorithm1.png}
 	\caption{Алгоритм}
 \end{figure}
-\subsection{Алгоритмын тайлбар}
-Дээрх зурганд харуулсан Алгоритмыг ерөнхийд нь тайлбарлавал, хэрэглэгчийн зураг үүсгэхийг хүссэн тексттэй адилхан агуулгатай өгөгдөл database дээр байгаа эсэхийг шалгах юм. Хэрэв тийм өгөгдөл олдвол тухайн өгөгдлийн цаашид үүсгэх шошгонууд дээрээ жин өгч магадлал тооцон ашиглах юм.
-Ингэхдээ текстээс зураг үүсгэдэг алгоритмыг ашиглан 8 өнгө 3 фонт дээр төрөл бүрийн зурагнууд үүсгэж түүнийгээ database дээр олдсон зурагнуудтай нийлүүлэн магадлал тооцно.
+
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{src/pictures/algorithm2.png}
 	\caption{Алгоритм-2}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.28]{src/pictures/algorithm3.png}
+	\caption{Алгоритм-3}
+\end{figure}
+
+
+
+
+\subsection{Алгоритмын тайлбар}
+Дээрх зурганд харуулсан Алгоритмыг ерөнхийд нь тайлбарлавал, хэрэглэгчийн зураг үүсгэхийг хүссэн тексттэй адилхан агуулгатай өгөгдөл database дээр байгаа эсэхийг шалгах юм. Хэрэв тийм өгөгдөл олдвол тухайн өгөгдлийн цаашид үүсгэх шошгонууд дээрээ жин өгч магадлал тооцон ашиглах юм.
+Ингэхдээ текстээс зураг үүсгэдэг алгоритмыг ашиглан 8 өнгө 3 фонт дээр төрөл бүрийн зурагнууд үүсгэж түүнийгээ database дээр олдсон зурагнуудтай нийлүүлэн магадлал тооцно.
 
 \begin{lstlisting}[language=Python,caption={Сонголт хийх код},frame=single]
 	if registered_materials_from_db:
@@ -121,6 +157,7 @@ else:
 	item_list.extend([black, other])
 	item_weight.extend([0.7, 0.3])
 \end{lstlisting}
+
 
 \subsection{Ажиллах дараалал}
 \begin{enumerate}
